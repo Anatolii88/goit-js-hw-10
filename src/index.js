@@ -9,12 +9,13 @@ const DEBOUNCE_DELAY = 300;
 const countriesEl = document.querySelector('.country-list')
 const countriesInfoEl = document.querySelector('.country-info')
 const inputEl = document.querySelector('#search-box')
-inputEl.addEventListener('input', onInput)
+inputEl.addEventListener('input', _.debounce(onInput,400))
+
 
 
 function onInput(e) { 
-  e.preventDefault()
-  let value = e.currentTarget.value.trim();
+  // e.preventDefault()
+  let value = e.target.value.trim();
   if (value === '') {
     countriesEl.innerHTML = ''
     countriesInfoEl.innerHTML = ''
